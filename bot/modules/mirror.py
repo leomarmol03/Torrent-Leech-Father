@@ -157,11 +157,7 @@ class MirrorListener:
             with download_dict_lock:
                 download_dict[self.uid] = tg_upload_status
             update_all_messages()
-            if self.loop is not None:
-                self.loop.run_until_complete(tg.upload())
-                self.loop.close()
-            else:
-                run(tg.upload())
+            run(tg.upload()
         else:
             size = get_path_size(up_path)
             LOGGER.info(f"Upload Name: {up_name}")
